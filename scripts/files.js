@@ -38,6 +38,9 @@
     cancel: function () {
       this.$el.removeClass('renaming');
       this.$('.rename-filename').attr('value', '');
+      if (!this.model.get('saved')) {
+        this.model.destroy();
+      }
     },
 
     markToggle: function () {
@@ -45,11 +48,9 @@
     },
 
     rename: function () {
-      if (this.model.attributes.marked) {
-        this.$el.addClass('renaming');
-        this.$('.rename-box').focus();
-        this.$('.rename-filename').attr('value', this.model.attributes.name);
-      }
+      this.$el.addClass('renaming');
+      this.$('.rename-box').focus();
+      this.$('.rename-filename').attr('value', this.model.attributes.name);
     },
 
     render: function () {
@@ -63,6 +64,7 @@
     save: function () {
       this.$el.removeClass('renaming');
       this.model.set('name', this.$('.rename-filename').val());
+      this.model.set('saved', true);
       this.render();
     },
   });
@@ -80,10 +82,12 @@
     },
 
     addFolder: function () {
-      filesList.add({
-          name: 'New folder',
-          url: '',
-        });
+      var newFolder = filesList.add({
+        name: 'New folder',
+        url: '',
+      });
+
+      newFolder.rename();
     },
 
     addOne: function (file) {
@@ -115,10 +119,12 @@
     {
       name: 'Example Image 1.png',
       url: 'https://unsplash.it/900/700?image=100',
+      saved: true,
     },
     {
       name: 'Example Image 2.png',
       url: 'https://unsplash.it/900/700?image=15',
+      saved: true,
     },
   ]);
 
