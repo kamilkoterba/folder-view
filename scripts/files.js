@@ -70,12 +70,20 @@
   var AppView = Backbone.View.extend({
     el: document.getElementById('folderView'),
     events: {
+      'click #addFolder': 'addFolder',
       'click #delete': 'delete',
       'click #rename': 'rename',
     },
 
     initialize: function () {
       this.listenTo(filesList, 'add', this.addOne);
+    },
+
+    addFolder: function () {
+      filesList.add({
+          name: 'New folder',
+          url: '',
+        });
     },
 
     addOne: function (file) {
