@@ -17,8 +17,6 @@
     },
   });
 
-  var filesList = new FilesList();
-
   var FileView = Backbone.View.extend({
     events: {
       'click .cancel': 'cancel',
@@ -77,12 +75,14 @@
       'click #rename': 'rename',
     },
 
-    initialize: function () {
-      this.listenTo(filesList, 'add', this.addOne);
+    initialize: function (filesList) {
+      debugger;
+      this.filesList = filesList;
+      this.listenTo(this.filesList, 'add', this.addOne);
     },
 
     addFolder: function () {
-      var newFolder = filesList.add({
+      var newFolder = this.filesList.add({
         name: 'New folder',
         url: '',
       });
@@ -100,20 +100,21 @@
 
     delete: function () {
       if (confirm('Are you sure?')) {
-        _.invoke(filesList.marked(), 'destroy');
+        _.invoke(this.filesList.marked(), 'destroy');
       }
 
       return false;
     },
 
     rename: function () {
-      _.invoke(filesList.marked(), 'rename');
+      _.invoke(this.filesList.marked(), 'rename');
 
       return false;
     },
   });
 
-  var App = new AppView;
+  var filesList = new FilesList();
+  var App = new AppView(filesList);
 
   filesList.add([
     {
@@ -127,5 +128,6 @@
       saved: true,
     },
   ]);
+
 
 })();
