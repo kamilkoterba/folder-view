@@ -1,0 +1,29 @@
+{
+  "name": "folder-view",
+  "description": "Simple folder view",
+  "main": "index.html",
+  "authors": [
+    "Kamil Koterba"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.0.0",
+    "underscore": "^1.8.3",
+    "backbone": "^1.3.3"
+  },
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "jquery": "^3.0.0",
+    "underscore": "^1.8.3",
+    "backbone": "^1.3.3"
+  }
+}
