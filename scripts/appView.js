@@ -17,8 +17,11 @@ define('scripts/appView',
 
         this.listenTo(this.filesList, 'add', this.addOne);
         this.listenTo(this.markAllView, 'markChange', this.markAll);
+        this.listenTo(this.filesList, 'change', this.updateButtonsState);
 
         this.$el.prepend(this.markAllView.render().$el);
+
+        this.setEditButtonsState(true);
       },
 
       addFolder: function () {
@@ -42,6 +45,24 @@ define('scripts/appView',
         if (confirm('Are you sure?')) {
           _.invoke(this.filesList.marked(), 'destroy');
         }
+      },
+
+      setEditButtonsState: function (disabled) {
+        this.$('#rename').prop('disabled', disabled);
+        this.$('#delete').prop('disabled', disabled);
+      },
+
+      updateButtonsState: function () {
+        var shouldEnable = _.any(this.filesList.models, function (item) {
+          return item.attributes.marked;
+        });
+
+        if (shouldEnable) {
+          this.setEditButtonsState(false);
+        } else {
+          this.setEditButtonsState(true);
+        }
+
       },
 
       markAll: function (markedAll) {
