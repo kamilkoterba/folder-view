@@ -16,11 +16,12 @@ define('scripts/fileView', ['jquery', 'underscore', 'backbone'],
       initialize: function () {
         this.listenTo(this.model, 'destroy', this.remove);
         this.listenTo(this.model, 'rename', this.rename);
+        this.listenTo(this.model, 'change', this.render);
       },
 
       cancel: function () {
         this.$el.removeClass('renaming');
-        this.$('.rename-filename').attr('value', '');
+        this.$('.rename-filename').attr('value', this.model.get('name'));
         if (!this.model.get('saved')) {
           this.model.destroy();
         }

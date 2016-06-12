@@ -1,5 +1,6 @@
-define('scripts/appView', ['jquery', 'underscore', 'backbone', 'scripts/fileView'],
-  function ($, _, Backbone, FileView) {
+define('scripts/appView',
+  ['jquery', 'underscore', 'backbone', 'scripts/fileView', 'scripts/markAllView'],
+  function ($, _, Backbone, FileView, MarkAllView) {
     'use strict';
 
     return Backbone.View.extend({
@@ -9,10 +10,15 @@ define('scripts/appView', ['jquery', 'underscore', 'backbone', 'scripts/fileView
         'click #delete': 'delete',
         'click #rename': 'rename',
       },
+      markAllView: new MarkAllView(),
 
       initialize: function (filesList) {
         this.filesList = filesList;
+
         this.listenTo(this.filesList, 'add', this.addOne);
+        this.listenTo(this.markAllView, 'markChange', this.markAll);
+
+        this.$el.prepend(this.markAllView.render().$el);
       },
 
       addFolder: function () {
@@ -36,8 +42,14 @@ define('scripts/appView', ['jquery', 'underscore', 'backbone', 'scripts/fileView
         if (confirm('Are you sure?')) {
           _.invoke(this.filesList.marked(), 'destroy');
         }
+      },
 
-        return false;
+      markAll: function (markedAll) {
+        if (markedAll) {
+          _.invoke(this.filesList.models, 'mark');
+        } else {
+          _.invoke(this.filesList.models, 'unmark');
+        }
       },
 
       rename: function () {
