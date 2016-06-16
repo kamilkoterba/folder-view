@@ -22,7 +22,7 @@ define('scripts/fileView', ['jquery', 'underscore', 'backbone'],
 
       cancel: function () {
         this.$el.removeClass('renaming');
-        this.$('.file-view__rename-box-filename').attr('value', this.model.get('name'));
+        this.$('.file-view__rename-box-filename').val(this.model.get('name'));
         if (!this.model.get('saved')) {
           this.model.destroy();
         }
@@ -35,7 +35,7 @@ define('scripts/fileView', ['jquery', 'underscore', 'backbone'],
       rename: function () {
         this.$el.addClass('renaming');
         this.$('.file-view__rename-box').focus();
-        this.$('.file-view__rename-box-filename').attr('value', this.model.attributes.name);
+        this.$('.file-view__rename-box-filename').attr('value', this.model.get('name'));
       },
 
       render: function () {

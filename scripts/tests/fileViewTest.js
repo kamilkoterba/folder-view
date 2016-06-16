@@ -37,14 +37,14 @@ define('scripts/tests/fileViewTest',
             equal($itemCheck.length, 1, 'Item check checkbox should exits.');
 
             notOk($itemCheck.prop('checked'), 'Initially checkbox should be unchecked.');
-            notOk(this.fileView.model.attributes.marked, 'Initially marked field in model should be empty.');
+            notOk(this.fileView.model.get('marked'), 'Initially marked field in model should be empty.');
 
             notOk(this.fileView.$el.hasClass('renaming'), 'Filename link should have provided url as href attribute.');
           });
 
           test('Marked field in model should reflect checkbox checked status', function () {
             this.fileView.$('.file-view__item-check').click();
-            ok(this.fileView.model.attributes.marked, 'Marked field should be set to true.');
+            ok(this.fileView.model.get('marked'), 'Marked field should be set to true.');
           });
 
           test('Top View element should have "renaming" class after triggering rename', function () {
@@ -55,7 +55,7 @@ define('scripts/tests/fileViewTest',
           test('URL should update in markup on model change', function () {
             var newUrl = 'http://newUrl';
 
-            this.fileView.model.attributes.url = newUrl;
+            this.fileView.model.set('url', newUrl);
             this.fileView.model.trigger('change');
             equal(this.fileView.$('.file-view__filename').attr('href'), newUrl);
           });
@@ -75,7 +75,7 @@ define('scripts/tests/fileViewTest',
             this.fileView.$('.save').click();
 
             equal(this.fileView.$('.file-view__filename').html(), newFilename, 'Link text should contain new file name.');
-            equal(this.fileView.model.attributes.name, newFilename, 'Model should be updated with new name.');
+            equal(this.fileView.model.get('name'), newFilename, 'Model should be updated with new name.');
             notOk(this.fileView.$el.hasClass('renaming'), '"Renaming" class should be removed.');
           });
 

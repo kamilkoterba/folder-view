@@ -54,7 +54,7 @@ define('scripts/appView',
 
       updateButtonsState: function () {
         var shouldEnable = _.any(this.filesList.models, function (item) {
-          return item.attributes.marked;
+          return item.get('marked');
         });
 
         if (shouldEnable) {
