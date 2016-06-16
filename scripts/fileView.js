@@ -9,6 +9,7 @@ define('scripts/fileView', ['jquery', 'underscore', 'backbone'],
         'click .item-check': 'markToggle',
       },
       tagName: 'li',
+      className: 'file-view',
       template: _.template(
         $('#fileTemplate').html()
       ),
@@ -21,7 +22,7 @@ define('scripts/fileView', ['jquery', 'underscore', 'backbone'],
 
       cancel: function () {
         this.$el.removeClass('renaming');
-        this.$('.rename-filename').attr('value', this.model.get('name'));
+        this.$('.rename-box__filename').attr('value', this.model.get('name'));
         if (!this.model.get('saved')) {
           this.model.destroy();
         }
@@ -34,20 +35,21 @@ define('scripts/fileView', ['jquery', 'underscore', 'backbone'],
       rename: function () {
         this.$el.addClass('renaming');
         this.$('.rename-box').focus();
-        this.$('.rename-filename').attr('value', this.model.attributes.name);
+        this.$('.rename-box__filename').attr('value', this.model.attributes.name);
       },
 
       render: function () {
         var templateData = this.model.toJSON();
 
         templateData.checked = templateData.marked ? 'checked="checked"' : '';
+        templateData.target = templateData.url.indexOf('http') >= 0 ? 'target="_blank""' : '';
         this.$el.html(this.template(templateData));
         return this;
       },
 
       save: function () {
         this.$el.removeClass('renaming');
-        this.model.set('name', this.$('.rename-filename').val());
+        this.model.set('name', this.$('.rename-box__filename').val());
         this.model.set('saved', true);
         this.render();
       },

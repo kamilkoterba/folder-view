@@ -19,7 +19,7 @@ define('scripts/appView',
         this.listenTo(this.markAllView, 'markChange', this.markAll);
         this.listenTo(this.filesList, 'change', this.updateButtonsState);
 
-        this.$el.prepend(this.markAllView.render().$el);
+        this.markAllView.render().$el.insertBefore(this.$('#filesList'));
 
         this.setEditButtonsState(true);
       },
@@ -27,7 +27,7 @@ define('scripts/appView',
       addFolder: function () {
         var newFolder = this.filesList.add({
           name: 'New folder',
-          url: '',
+          url: '#',
         });
 
         newFolder.rename();
@@ -38,7 +38,7 @@ define('scripts/appView',
           model: file,
         });
 
-        this.$('#fileList').append(fileView.render().el);
+        this.$('#filesList').append(fileView.render().el);
       },
 
       delete: function () {

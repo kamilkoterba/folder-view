@@ -13,11 +13,11 @@
 <script type="text/template" id="fileTemplate">
 	<input type="checkbox" class="item-check" <%= checked %>>
 	<div class="rename-box">
-		<input type="text" class="rename-filename" value="<%= name %>">
-		<button class="cancel">Cancel</button>
-		<button class="save">Save</button>
+		<input type="text" class="rename-box__filename" value="<%= name %>">
+		<button class="cancel button-secondary">Cancel</button>
+		<button class="save button-primary">Save</button>
 	</div>
-	<a href="<%= url %>" class="filename"><%= name %></a>
+	<a href="<%= url %>" class="filename" <%= target %>><%= name %></a>
 </script>
 </body>
 </html>

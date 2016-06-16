@@ -1,0 +1,42 @@
+@import '../variables';
+
+button {
+	background: $color-button-background;
+	border-radius: 2px;
+	border: 1px solid $color-button-border;
+	color: $color-text;
+	padding: 4px 12px;
+
+	&:hover {
+		background: $color-button-background-hover;
+		cursor: pointer;
+	}
+	&[disabled] {
+		opacity: 0.4;
+
+		&:hover {
+			background: $color-button-background;
+			cursor: default;
+		}
+	}
+}
+
+.button-primary {
+	background-color: $color-button-primary-background;
+	border-color: $color-button-primary-background;
+	color: $color-button-primary-text;
+
+	&:hover {
+		background: $color-button-primary-background-hover;
+	}
+}
+
+.button-secondary {
+	background: transparent;
+	border: 0;
+	text-decoration: underline;
+
+	&:hover {
+		background: transparent;
+	}
+}

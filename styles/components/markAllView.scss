@@ -1,0 +1,14 @@
+.mark-all {
+	border: 1px solid $color-border;
+	border-width: 1px 0;
+	padding: 3px 15px;
+}
+.mark-all__checkbox {
+	margin-right: 12px;
+}
+
+.caption {
+	color: $color-text-secondary;
+	font-weight: bold;
+	margin-left: 13px;
+}

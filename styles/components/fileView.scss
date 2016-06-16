@@ -1,0 +1,45 @@
+@import '../variables';
+
+$space-side: 12px;
+$border-width: 1px;
+$line-height: 24px;
+
+.file-view {
+	border-bottom: 1px solid $color-border-light;
+	list-style: none;
+	padding: 6px 15px;
+}
+
+.filename {
+	color: $color-text;
+	line-height: $line-height + 2;
+	padding: 0px 13px;
+	text-decoration: none;
+
+	&:hover {
+		text-decoration: underline;
+	}
+}
+
+.item-check {
+	margin-right: 12px;
+}
+
+.rename-box {
+	display: none;
+}
+
+.rename-box__filename {
+	line-height: $line-height;
+	padding: 0px 11px;
+}
+
+.renaming {
+	.filename {
+		display: none;
+	}
+
+	.rename-box {
+		display: inline;
+	}
+}

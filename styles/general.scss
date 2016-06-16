@@ -1,0 +1,21 @@
+@import 'variables';
+body {
+	color: $color-text;
+	font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+	font-size: $font-size-base;
+	line-height: 20px;
+}
+
+input {
+	color: $color-text;
+	font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+	font-size: $font-size-base;
+}
+
+.toolbox {
+	margin-bottom: 20px;
+}
+.files-list {
+	margin: 0;
+	padding: 0;
+}

@@ -3,6 +3,7 @@ define('scripts/markAllView', ['jquery', 'underscore', 'backbone'],
     'use strict';
 
     return Backbone.View.extend({
+      className: 'mark-all',
       events: {
         'click #markAll': 'markAll',
       },

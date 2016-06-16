@@ -31,7 +31,7 @@ define('scripts/tests/fileViewTest',
 
             equal($filename.attr('href'), url, 'Filename link should have provided url as href attribute.');
             equal($filename.html(), name, 'Filename link should have filename as text.');
-            equal(this.fileView.$('.rename-filename').val(), name, 'Filename rename input should have filename as value.');
+            equal(this.fileView.$('.rename-box__filename').val(), name, 'Filename rename input should have filename as value.');
             equal(this.fileView.$('.cancel').length, 1, 'Cancel button should exist.');
             equal(this.fileView.$('.save').length, 1, 'Save button should exist.');
             equal($itemCheck.length, 1, 'Item check checkbox should exits.');
@@ -70,7 +70,7 @@ define('scripts/tests/fileViewTest',
             var newFilename = 'new file name';
 
             this.fileView.$el.addClass('renaming');
-            this.fileView.$('.rename-filename').val(newFilename);
+            this.fileView.$('.rename-box__filename').val(newFilename);
 
             this.fileView.$('.save').click();
 
