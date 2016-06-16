@@ -1,13 +1,14 @@
-.mark-all {
+.list-head {
 	border: 1px solid $color-border;
 	border-width: 1px 0;
 	padding: 3px 15px;
 }
-.mark-all__checkbox {
+
+.list-head__mark-all {
 	margin-right: 12px;
 }
 
-.caption {
+.list-head__caption {
 	color: $color-text-secondary;
 	font-weight: bold;
 	margin-left: 13px;

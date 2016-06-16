@@ -26,12 +26,12 @@ define('scripts/tests/fileViewTest',
         function () {
 
           test('Test for existance of markup items', function () {
-            var $filename = this.fileView.$('.filename');
-            var $itemCheck = this.fileView.$('.item-check');
+            var $filename = this.fileView.$('.file-view__filename');
+            var $itemCheck = this.fileView.$('.file-view__item-check');
 
             equal($filename.attr('href'), url, 'Filename link should have provided url as href attribute.');
             equal($filename.html(), name, 'Filename link should have filename as text.');
-            equal(this.fileView.$('.rename-box__filename').val(), name, 'Filename rename input should have filename as value.');
+            equal(this.fileView.$('.file-view__rename-box-filename').val(), name, 'Filename rename input should have filename as value.');
             equal(this.fileView.$('.cancel').length, 1, 'Cancel button should exist.');
             equal(this.fileView.$('.save').length, 1, 'Save button should exist.');
             equal($itemCheck.length, 1, 'Item check checkbox should exits.');
@@ -43,7 +43,7 @@ define('scripts/tests/fileViewTest',
           });
 
           test('Marked field in model should reflect checkbox checked status', function () {
-            this.fileView.$('.item-check').click();
+            this.fileView.$('.file-view__item-check').click();
             ok(this.fileView.model.attributes.marked, 'Marked field should be set to true.');
           });
 
@@ -57,7 +57,7 @@ define('scripts/tests/fileViewTest',
 
             this.fileView.model.attributes.url = newUrl;
             this.fileView.model.trigger('change');
-            equal(this.fileView.$('.filename').attr('href'), newUrl);
+            equal(this.fileView.$('.file-view__filename').attr('href'), newUrl);
           });
 
           test('Should remove "renaming" class on cancel', function () {
@@ -70,11 +70,11 @@ define('scripts/tests/fileViewTest',
             var newFilename = 'new file name';
 
             this.fileView.$el.addClass('renaming');
-            this.fileView.$('.rename-box__filename').val(newFilename);
+            this.fileView.$('.file-view__rename-box-filename').val(newFilename);
 
             this.fileView.$('.save').click();
 
-            equal(this.fileView.$('.filename').html(), newFilename, 'Link text should contain new file name.');
+            equal(this.fileView.$('.file-view__filename').html(), newFilename, 'Link text should contain new file name.');
             equal(this.fileView.model.attributes.name, newFilename, 'Model should be updated with new name.');
             notOk(this.fileView.$el.hasClass('renaming'), '"Renaming" class should be removed.');
           });

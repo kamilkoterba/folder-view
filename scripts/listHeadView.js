@@ -1,17 +1,17 @@
-define('scripts/markAllView', ['jquery', 'underscore', 'backbone'],
+define('scripts/listHeadView', ['jquery', 'underscore', 'backbone'],
   function ($, _, Backbone) {
     'use strict';
 
     return Backbone.View.extend({
-      className: 'mark-all',
+      className: 'list-head',
       events: {
-        'click #markAll': 'markAll',
+        'click .list-head__mark-all': 'markAll',
       },
       markedAll: false,
-      template: _.template($('#markAllTemplate').html()),
+      template: _.template($('#listHeadTemplate').html()),
 
       markAll: function () {
-        this.markedAll = this.$('#markAll').prop('checked');
+        this.markedAll = this.$('.list-head__mark-all').prop('checked');
         this.trigger('markChange', this.markedAll);
       },
 

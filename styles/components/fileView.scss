@@ -10,7 +10,7 @@ $line-height: 24px;
 	padding: 6px 15px;
 }
 
-.filename {
+.file-view__filename {
 	color: $color-text;
 	line-height: $line-height + 2;
 	padding: 0px 13px;
@@ -21,25 +21,25 @@ $line-height: 24px;
 	}
 }
 
-.item-check {
+.file-view__item-check {
 	margin-right: 12px;
 }
 
-.rename-box {
+.file-view__rename-box {
 	display: none;
 }
 
-.rename-box__filename {
+.file-view__rename-box-filename {
 	line-height: $line-height;
 	padding: 0px 11px;
 }
 
 .renaming {
-	.filename {
+	.file-view__filename {
 		display: none;
 	}
 
-	.rename-box {
+	.file-view__rename-box {
 		display: inline;
 	}
 }

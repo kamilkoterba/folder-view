@@ -6,7 +6,7 @@ define('scripts/fileView', ['jquery', 'underscore', 'backbone'],
       events: {
         'click .cancel': 'cancel',
         'click .save': 'save',
-        'click .item-check': 'markToggle',
+        'click .file-view__item-check': 'markToggle',
       },
       tagName: 'li',
       className: 'file-view',
@@ -22,7 +22,7 @@ define('scripts/fileView', ['jquery', 'underscore', 'backbone'],
 
       cancel: function () {
         this.$el.removeClass('renaming');
-        this.$('.rename-box__filename').attr('value', this.model.get('name'));
+        this.$('.file-view__rename-box-filename').attr('value', this.model.get('name'));
         if (!this.model.get('saved')) {
           this.model.destroy();
         }
@@ -34,8 +34,8 @@ define('scripts/fileView', ['jquery', 'underscore', 'backbone'],
 
       rename: function () {
         this.$el.addClass('renaming');
-        this.$('.rename-box').focus();
-        this.$('.rename-box__filename').attr('value', this.model.attributes.name);
+        this.$('.file-view__rename-box').focus();
+        this.$('.file-view__rename-box-filename').attr('value', this.model.attributes.name);
       },
 
       render: function () {
@@ -49,7 +49,7 @@ define('scripts/fileView', ['jquery', 'underscore', 'backbone'],
 
       save: function () {
         this.$el.removeClass('renaming');
-        this.model.set('name', this.$('.rename-box__filename').val());
+        this.model.set('name', this.$('.file-view__rename-box-filename').val());
         this.model.set('saved', true);
         this.render();
       },

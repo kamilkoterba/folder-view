@@ -45,15 +45,15 @@ button {
   .button-secondary:hover {
     background: transparent; }
 
-.mark-all {
+.list-head {
   border: 1px solid #e2e2e2;
   border-width: 1px 0;
   padding: 3px 15px; }
 
-.mark-all__checkbox {
+.list-head__mark-all {
   margin-right: 12px; }
 
-.caption {
+.list-head__caption {
   color: #999;
   font-weight: bold;
   margin-left: 13px; }
@@ -63,26 +63,26 @@ button {
   list-style: none;
   padding: 6px 15px; }
 
-.filename {
+.file-view__filename {
   color: #525252;
   line-height: 26px;
   padding: 0px 13px;
   text-decoration: none; }
-  .filename:hover {
+  .file-view__filename:hover {
     text-decoration: underline; }
 
-.item-check {
+.file-view__item-check {
   margin-right: 12px; }
 
-.rename-box {
+.file-view__rename-box {
   display: none; }
 
-.rename-box__filename {
+.file-view__rename-box-filename {
   line-height: 24px;
   padding: 0px 11px; }
 
-.renaming .filename {
+.renaming .file-view__filename {
   display: none; }
 
-.renaming .rename-box {
+.renaming .file-view__rename-box {
   display: inline; }

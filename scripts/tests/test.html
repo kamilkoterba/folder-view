@@ -11,13 +11,13 @@
 <script data-main="testsMain" src="../../bower_components/requirejs/require.js"></script>
 <script src="../../bower_components/jquery/dist/jquery.js"></script>
 <script type="text/template" id="fileTemplate">
-	<input type="checkbox" class="item-check" <%= checked %>>
-	<div class="rename-box">
-		<input type="text" class="rename-box__filename" value="<%= name %>">
+	<input type="checkbox" class="file-view__item-check" <%= checked %>>
+	<div class="file-view__rename-box">
+		<input type="text" class="file-view__rename-box-filename" value="<%= name %>">
 		<button class="cancel button-secondary">Cancel</button>
 		<button class="save button-primary">Save</button>
 	</div>
-	<a href="<%= url %>" class="filename" <%= target %>><%= name %></a>
+	<a href="<%= url %>" class="file-view__filename" <%= target %>><%= name %></a>
 </script>
 </body>
 </html>

@@ -22,17 +22,17 @@
 <script src="bower_components/jquery/dist/jquery.min.js" type="text/javascript"></script>
 <script src="scripts/requirejsConfig.js" type="text/javascript"></script>
 <script type="text/template" id="fileTemplate">
-	<input type="checkbox" class="item-check" <%= checked %>>
-	<div class="rename-box">
-		<input type="text" class="rename-box__filename" value="<%= name %>">
+	<input type="checkbox" class="file-view__item-check" <%= checked %>>
+	<div class="file-view__rename-box">
+		<input type="text" class="file-view__rename-box-filename" value="<%= name %>">
 		<button class="cancel button-secondary">Cancel</button>
 		<button class="save button-primary">Save</button>
 	</div>
-	<a href="<%= url %>" class="filename" <%= target %>><%= name %></a>
+	<a href="<%= url %>" class="file-view__filename" <%= target %>><%= name %></a>
 </script>
-<script type="text/template" id="markAllTemplate">
-	<input type="checkbox" id="markAll" class="mark-all__checkbox" <%= checked %>>
-	<span class="caption">File name</span>
+<script type="text/template" id="listHeadTemplate">
+	<input type="checkbox" class="list-head__mark-all" <%= checked %>>
+	<span class="list-head__caption">File name</span>
 </script>
 <script src="scripts/app.js" type="text/javascript"></script>
 </body>

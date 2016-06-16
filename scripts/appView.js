@@ -1,6 +1,6 @@
 define('scripts/appView',
-  ['jquery', 'underscore', 'backbone', 'scripts/fileView', 'scripts/markAllView'],
-  function ($, _, Backbone, FileView, MarkAllView) {
+  ['jquery', 'underscore', 'backbone', 'scripts/fileView', 'scripts/listHeadView'],
+  function ($, _, Backbone, FileView, ListHeadView) {
     'use strict';
 
     return Backbone.View.extend({
@@ -10,16 +10,16 @@ define('scripts/appView',
         'click #delete': 'delete',
         'click #rename': 'rename',
       },
-      markAllView: new MarkAllView(),
+      listHeadView: new ListHeadView(),
 
       initialize: function (filesList) {
         this.filesList = filesList;
 
         this.listenTo(this.filesList, 'add', this.addOne);
-        this.listenTo(this.markAllView, 'markChange', this.markAll);
+        this.listenTo(this.listHeadView, 'markChange', this.markAll);
         this.listenTo(this.filesList, 'change', this.updateButtonsState);
 
-        this.markAllView.render().$el.insertBefore(this.$('#filesList'));
+        this.listHeadView.render().$el.insertBefore(this.$('#filesList'));
 
         this.setEditButtonsState(true);
       },
